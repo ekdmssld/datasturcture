@@ -113,6 +113,7 @@ int partition(int list[], int left, int right){
 }while(low < high);
     SWAP(list[left], list[high], temp);
     return high;
+}
 int main(){
     int i;
     n = MAX;
