@@ -76,6 +76,43 @@ void merge(int list[], int left, int mid, int right){
     for(l = left; l <= right; l++)
         list[l] = sorted[l];
 }
+
+void merge_sort(int list[], int left, int right){
+    int mid;
+    if (left < right){
+        mid = (left + right) / 2;
+        merge_sort(list, left, mid);
+        merge_sort(list, mid + 1, right);
+        merge(list, left, mid, right);
+    }
+}
+void quick_sort(int list[], int left, int right){
+    if(left < right){
+        int q = partition(list, left, right);
+        quick_sort(list, left, q - 1);
+        quick_sort(list, q + 1, right);
+    }
+}
+int partition(int list[], int left, int right){
+    int pivot, temp;
+    int low, high;
+    
+    low = left;
+    high = right + 1;
+    pivot = list[left];
+    do{
+        do{
+            low++;
+        }while(list[low] < pivot);
+        do{
+            high--;
+    }while(list[high] > pivot);
+    if(low < high){
+        SWAP(list[low], list[high], temp);
+    }
+}while(low < high);
+    SWAP(list[left], list[high], temp);
+    return high;
 int main(){
     int i;
     n = MAX;
